@@ -7,7 +7,7 @@ export default function HeroPage({ id }) {
 
   return (
     <section id={id} className="w-11/12 mx-auto h-screen flex flex-col items-center justify-center text-center">
-      <h1 className="text-6xl font-bold text-gold-500 font-montserrat">Mudien</h1>
+      <h1 className="text-6xl font-bold bg-gradient-to-bl from-golden-brown to-satin-sheen-gold-800 bg-clip-text text-transparent font-montserrat">Mudien</h1>
       <h2 className="text-xl font-semibold mt-2 text-golden-brown">
         Hey there! I'm Ubay Lahmudien
       </h2>

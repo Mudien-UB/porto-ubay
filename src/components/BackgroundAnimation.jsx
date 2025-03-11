@@ -22,9 +22,9 @@ export default function BackgroundAnimation() {
     resizeCanvas();
     window.addEventListener("resize", resizeCanvas);
 
-    const numParticles = 150;
+    const numParticles = 100;
     const maxDistance = 100;
-    const repulsionStrength = 0.2; // Semakin besar, semakin cepat menjauh
+    const repulsionStrength = 0.2;
     const returnSpeed = 0.02;
     const scrollSpeedFactor = 0.3;
 
@@ -34,22 +34,21 @@ export default function BackgroundAnimation() {
         this.baseY = Math.random() * canvas.height;
         this.x = this.baseX;
         this.y = this.baseY;
-        this.width = Math.random() * 10 + 5;
-        this.height = 2;
+        this.size = Math.random() * 15 + 5;
         this.angle = Math.random() * 360;
-        this.color = "#8c7130";
+        this.color = "#2d6a4f";
         this.speedX = Math.random() * 1 - 0.5;
         this.speedY = Math.random() * 1 - 0.5;
       }
 
       update() {
         if (mouse.current.x !== null && mouse.current.y !== null) {
-          let dx = this.x - mouse.current.x; // Mengubah arah menjauh dari mouse
+          let dx = this.x - mouse.current.x;
           let dy = this.y - mouse.current.y;
           let distance = Math.sqrt(dx * dx + dy * dy);
 
           if (distance < maxDistance) {
-            let force = (maxDistance - distance) / maxDistance; // Efek lebih kuat saat dekat
+            let force = (maxDistance - distance) / maxDistance;
             this.x += dx * force * repulsionStrength;
             this.y += dy * force * repulsionStrength;
           } else {
@@ -65,23 +64,25 @@ export default function BackgroundAnimation() {
         }
       }
 
-      draw() {
+      drawLeaf() {
         ctx.save();
         ctx.translate(this.x, this.y);
         ctx.rotate((this.angle * Math.PI) / 180);
         ctx.fillStyle = this.color;
-        ctx.fillRect(-this.width / 2, -this.height / 2, this.width, this.height);
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.bezierCurveTo(-this.size / 2, -this.size, -this.size, this.size / 2, 0, this.size);
+        ctx.bezierCurveTo(this.size, this.size / 2, this.size / 2, -this.size, 0, 0);
+        ctx.fill();
         ctx.restore();
       }
     }
 
-    // Inisialisasi partikel
     particlesArray.current = [];
     for (let i = 0; i < numParticles; i++) {
       particlesArray.current.push(new Particle());
     }
 
-    // Event listener untuk mouse
     const handleMouseMove = (event) => {
       mouse.current.x = event.clientX;
       mouse.current.y = event.clientY;
@@ -92,7 +93,6 @@ export default function BackgroundAnimation() {
       mouse.current.y = null;
     };
 
-    // Event listener untuk scroll
     const handleScroll = () => {
       let scrollDiff = window.scrollY - scrollOffset.current;
       particlesArray.current.forEach((particle) => {
@@ -110,7 +110,7 @@ export default function BackgroundAnimation() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       particlesArray.current.forEach((particle) => {
         particle.update();
-        particle.draw();
+        particle.drawLeaf();
       });
       animationFrameId = requestAnimationFrame(animate);
     };
