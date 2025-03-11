@@ -2,10 +2,70 @@
 
 @import "tailwindcss";
 
-@theme{
+@theme {
   --font-poppins: 'Poppins', sans-serif;
   --font-roboto: 'Roboto', sans-serif;
   --font-montserrat: 'Montserrat', sans-serif;
 
-  
+  --color-golden-brown:#8C7130;
+  --color-golden-brown-100:#1c170a;
+  --color-golden-brown-200:#382d13;
+  --color-golden-brown-300:#54441d;
+  --color-golden-brown-400:#705a26;
+  --color-golden-brown-500:#8c7130;
+  --color-golden-brown-600:#bc9741;
+  --color-golden-brown-700:#ceb26f;
+  --color-golden-brown-800:#decb9f;
+  --color-golden-brown-900:#efe5cf;
+
+  --color-satin-sheen-gold:#C49E42;
+  --color-satin-sheen-gold-100:#281f0c;
+  --color-satin-sheen-gold-200:#4f3f19;
+  --color-satin-sheen-gold-300:#775e25;
+  --color-satin-sheen-gold-400:#9e7e32;
+  --color-satin-sheen-gold-500:#c49e42;
+  --color-satin-sheen-gold-600:#cfb067;
+  --color-satin-sheen-gold-700:#dbc48d;
+  --color-satin-sheen-gold-800:#e7d7b3;
+  --color-satin-sheen-gold-900:#f3ebd9;
+
+  --color-ivory:#FEFFF6;
+  --color-ivory-100:#586400;
+  --color-ivory-200:#b1c800;
+  --color-ivory-300:#e6ff2d;
+  --color-ivory-400:#f2ff91;
+  --color-ivory-500:#fefff6;
+  --color-ivory-600:#fefff7;
+  --color-ivory-700:#fefff9;
+  --color-ivory-800:#fffffb;
+  --color-ivory-900:#fffffd;
+
+  --color-brunswick-green:#0D463C;
+  --color-brunswick-green-100:#030e0c;
+  --color-brunswick-green-200:#051c17;
+  --color-brunswick-green-300:#082923;
+  --color-brunswick-green-400:#0a372f;
+  --color-brunswick-green-500:#0d463c;
+  --color-brunswick-green-600:#1a8d78;
+  --color-brunswick-green-700:#27d6b6;
+  --color-brunswick-green-800:#6ee4cf;
+  --color-brunswick-green-900:#b7f2e7;
+
+  --color-raisin-black:#2B2A2C;
+  --color-raisin-black-100:#090809;
+  --color-raisin-black-200:#111112;
+  --color-raisin-black-300:#1a191b;
+  --color-raisin-black-400:#232223;
+  --color-raisin-black-500:#2b2a2c;
+  --color-raisin-black-600:#565457;
+  --color-raisin-black-700:#807d83;
+  --color-raisin-black-800:#aaa9ac;
+  --color-raisin-black-900:#d5d4d6;
+
+}
+
+:root{
+  color: var(--color-ivory);
+  background-color: var(--color-brunswick-green-200);
+  overflow-x: hidden;
 }

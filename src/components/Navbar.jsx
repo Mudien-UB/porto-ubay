@@ -1,0 +1,22 @@
+import React from 'react'
+
+export default function Navbar() {
+  const scrollToSection = (id) => {
+    const element = document.getElementById(id)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
+  return (
+    <nav className="fixed top-0 left-0 w-full bg-brunswick-green-500 shadow-md p-4 z-50">
+      <ul className="flex space-x-6 justify-center">
+        <li><button onClick={() => scrollToSection('home')} className="hover:text-satin-sheen-gold font-semibold">Home</button></li>
+        <li><button onClick={() => scrollToSection('about')} className="hover:text-satin-sheen-gold font-semibold">About</button></li>
+        <li><button onClick={() => scrollToSection('projects')} className="hover:text-satin-sheen-gold font-semibold">Projects</button></li>
+        <li><button onClick={() => scrollToSection('blog')} className="hover:text-satin-sheen-gold font-semibold">Blog</button></li>
+        <li><button onClick={() => scrollToSection('contact')} className="hover:text-satin-sheen-gold font-semibold">Contact</button></li>
+      </ul>
+    </nav>
+  )
+}
