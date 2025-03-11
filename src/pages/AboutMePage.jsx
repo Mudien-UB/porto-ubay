@@ -7,7 +7,7 @@ export default function AboutMePage({ id }) {
     ]
 
   return (
-    <section id={id} className="w-11/12 mx-auto h-screen flex flex-col justify-center items-center text-center">
+    <section id={id} className="w-11/12 bg-brunswick-green-100/20 backdrop-blur-sm mx-auto h-screen flex flex-col justify-center items-center text-center">
       <div className="max-w-3xl">
         <h3 className="text-3xl text-ivory font-bold mb-4">About Me</h3>
         <div className="flex justify-center mb-6">

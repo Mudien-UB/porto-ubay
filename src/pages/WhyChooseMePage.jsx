@@ -13,7 +13,7 @@ export default function WhyChooseMePage() {
   
 
   return (
-    <div className="w-11/12 mx-auto h-max py-10 flex flex-col justify-center items-center text-center">
+    <section className="w-11/12 mx-auto h-max py-10 flex flex-col justify-center items-center text-center">
       <div className="max-w-3xl">
         <h1 className="text-5xl font-black text-ivory mb-4">Why Choose Me</h1>
         <ul className="text-lg text-golden-brown leading-relaxed text-left">
@@ -27,6 +27,6 @@ export default function WhyChooseMePage() {
           ))}
         </ul>
       </div>
-    </div>
+    </section>
   )
 }

@@ -6,7 +6,7 @@ import { FaLinkedin } from "react-icons/fa";
 
 export default function ContactPage({id}) {
   return (
-    <div id={id} className="min-h-screen bg-transparent flex flex-col items-center justify-center p-6">
+    <section id={id} className="min-h-screen bg-transparent flex flex-col items-center justify-center p-6">
       <div className="w-full max-w-lg bg-brunswick-green-300 p-6 rounded-lg shadow-md">
         <h2 className="text-2xl font-bold text-center text-gray-900 dark:text-gray-100 mb-4">Contact Me</h2>
 
@@ -24,6 +24,6 @@ export default function ContactPage({id}) {
           </a>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
