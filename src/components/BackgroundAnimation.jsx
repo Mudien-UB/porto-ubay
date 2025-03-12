@@ -8,12 +8,9 @@ export default function BackgroundAnimation() {
 
   useEffect(() => {
     const canvas = canvasRef.current;
+    if (!canvas) return;
     const ctx = canvas.getContext("2d");
-
-    if (!ctx) {
-      console.error("Canvas context is null");
-      return;
-    }
+    if (!ctx) return;
 
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
@@ -26,6 +23,7 @@ export default function BackgroundAnimation() {
     const maxDistance = 100;
     const repulsionStrength = 0.2;
     const returnSpeed = 0.02;
+    const driftFactor = 0.05;
     const scrollSpeedFactor = 0.3;
 
     class Particle {
@@ -34,11 +32,12 @@ export default function BackgroundAnimation() {
         this.baseY = Math.random() * canvas.height;
         this.x = this.baseX;
         this.y = this.baseY;
-        this.size = Math.random() * 15 + 5;
-        this.angle = Math.random() * 360;
+        this.size = Math.random() * 10 + 10;
         this.color = "#2d6a4f";
-        this.speedX = Math.random() * 1 - 0.5;
-        this.speedY = Math.random() * 1 - 0.5;
+        this.velocityX = (Math.random() - 0.1) * 5;
+        this.velocityY = (Math.random() - 0.1) * 5;
+        this.angle = Math.random() * 360;
+        this.angleSpeed = Math.random() * 4 - 2;
       }
 
       update() {
@@ -51,17 +50,21 @@ export default function BackgroundAnimation() {
             let force = (maxDistance - distance) / maxDistance;
             this.x += dx * force * repulsionStrength;
             this.y += dy * force * repulsionStrength;
-          } else {
-            this.x += (this.baseX - this.x) * returnSpeed;
-            this.y += (this.baseY - this.y) * returnSpeed;
           }
-        } else {
-          this.x += this.speedX;
-          this.y += this.speedY;
-
-          if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-          if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
         }
+
+        this.x += this.velocityX;
+        this.y += this.velocityY;
+        this.angle += this.angleSpeed;
+
+        this.velocityX += (Math.random() - 0.5) * driftFactor;
+        this.velocityY += (Math.random() - 0.5) * driftFactor;
+
+        this.x += (this.baseX - this.x) * returnSpeed;
+        this.y += (this.baseY - this.y) * returnSpeed;
+
+        if (this.x <= 0 || this.x >= canvas.width) this.velocityX *= -1;
+        if (this.y <= 0 || this.y >= canvas.height) this.velocityY *= -1;
       }
 
       drawLeaf() {
