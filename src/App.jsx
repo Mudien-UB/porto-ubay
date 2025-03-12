@@ -35,7 +35,7 @@ export default function App() {
     const handleScroll = () => {
       const heroElement = document.getElementById("home");
       if (heroElement) {
-        setShowNavbar(window.scrollY > heroElement.clientHeight * 0.5);
+        setShowNavbar(window.scrollY > heroElement.clientHeight * 0.25);
       }
     };
 
@@ -50,11 +50,9 @@ export default function App() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 z-50 w-full drop-shadow-2xl   transition-all duration-300 ease-in-out ${
-          showNavbar ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-full"
-        }`}
+        className={`fixed top-0 left-0 z-50 w-full ${showNavbar ? 'shadow-2xl' : '' } `}
       >
-        <Navbar />
+        <Navbar showNavbar={showNavbar} />
       </header>
 
       <BackgroundAnimation />

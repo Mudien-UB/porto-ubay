@@ -14,8 +14,8 @@ export default function WhyChooseMePage() {
 
   return (
     <section className="w-11/12 mx-auto h-max py-10 flex flex-col justify-center items-center text-center">
-      <div className="max-w-3xl">
-        <h1 className="text-5xl font-black text-ivory mb-4">Why Choose Me</h1>
+      <div className="max-w-3xl flex flex-col gap-15">
+        <h1 className="text-5xl font-montserrat font-bold underline underline-offset-auto text-ivory-500 mb-4">Why Choose Me</h1>
         <ul className="text-lg text-golden-brown leading-relaxed text-left">
           {whyPoint.map((item, index) => (
             <li 

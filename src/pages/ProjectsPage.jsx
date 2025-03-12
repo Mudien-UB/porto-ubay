@@ -11,7 +11,7 @@ const projects = [
 export default function ProjectsPage({ id }) {
   return (
     <section id={id} className="w-11/12 mx-auto h-screen p-10 bg-brunswick-green-100/20 backdrop-blur-sm">
-      <h2 className="text-2xl font-semibold text-center mt-20 mb-6">Recent Projects</h2>
+      <h2 className="text-3xl font-montserrat font-semibold text-center mt-20 mb-6">Recent Projects</h2>
       <div className="grid grid-cols-1 pt-10 px-10 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {projects.map((project) => (
           <div
