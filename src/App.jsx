@@ -32,17 +32,25 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const heroElement = document.getElementById("home");
-      if (heroElement) {
-        setShowNavbar(window.scrollY > heroElement.clientHeight * 0.5);
+    alert("Website ini masih dalam tahap pengembangan/production!");
+  
+    document.body.classList.add("hidden");
+  
+    const checkReady = () => {
+      if (document.readyState === "complete" && document.fonts.ready) {
+        setLoading(false);
+        document.body.classList.remove("hidden");
       }
     };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+  
+    window.addEventListener("load", checkReady);
+    document.fonts.ready.then(checkReady);
+  
+    return () => {
+      window.removeEventListener("load", checkReady);
+    };
   }, []);
-
+  
   if (loading) {
     return <LoadingPage />;
   }
@@ -50,11 +58,9 @@ export default function App() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 z-50 w-full drop-shadow-2xl   transition-all duration-300 ease-in-out ${
-          showNavbar ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-full"
-        }`}
+        className={`fixed top-0 left-0 z-50 w-full ${showNavbar ? 'shadow-2xl' : '' } `}
       >
-        <Navbar />
+        <Navbar showNavbar={showNavbar} />
       </header>
 
       <BackgroundAnimation />
