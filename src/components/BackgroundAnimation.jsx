@@ -20,51 +20,93 @@ export default function BackgroundAnimation() {
     window.addEventListener("resize", resizeCanvas);
 
     const numParticles = 100;
-    const maxDistance = 100;
-    const repulsionStrength = 0.2;
-    const returnSpeed = 0.02;
-    const driftFactor = 0.05;
-    const scrollSpeedFactor = 0.3;
+    const maxDistance = 120;
+    const repulsionStrength = 0.1;
+    const driftFactor = 0.02;
+    const scrollSpeedFactor = 0.2;
+
+    const smoothMouse = { x: null, y: null };
+    const lerp = (start, end, amt) => (1 - amt) * start + amt * end;
 
     class Particle {
       constructor() {
-        this.baseX = Math.random() * canvas.width;
-        this.baseY = Math.random() * canvas.height;
-        this.x = this.baseX;
-        this.y = this.baseY;
-        this.size = Math.random() * 10 + 10;
+        this.spawnFromEdge();
+        this.size = Math.random() * 6 + 9;
         this.color = "#2d6a4f";
-        this.velocityX = (Math.random() - 0.1) * 5;
-        this.velocityY = (Math.random() - 0.1) * 5;
         this.angle = Math.random() * 360;
-        this.angleSpeed = Math.random() * 4 - 2;
+        this.angleSpeed = Math.random() * 0.2 - 0.1;
+      }
+
+      spawnFromEdge() {
+        const edge = Math.floor(Math.random() * 4);
+        const margin = 50;
+
+        switch (edge) {
+          case 0:
+            this.x = -margin;
+            this.y = Math.random() * canvas.height;
+            this.velocityX = Math.random() * 0.1 + 0.1;
+            this.velocityY = (Math.random() - 0.5) * 0.1;
+            break;
+          case 1:
+            this.x = canvas.width + margin;
+            this.y = Math.random() * canvas.height;
+            this.velocityX = -Math.random() * 0.1 - 0.1;
+            this.velocityY = (Math.random() - 0.5) * 0.1;
+            break;
+          case 2:
+            this.x = Math.random() * canvas.width;
+            this.y = -margin;
+            this.velocityY = Math.random() * 0.1 + 0.1;
+            this.velocityX = (Math.random() - 0.5) * 0.1;
+            break;
+          case 3:
+            this.x = Math.random() * canvas.width;
+            this.y = canvas.height + margin;
+            this.velocityY = -Math.random() * 0.1 - 0.1;
+            this.velocityX = (Math.random() - 0.5) * 0.1;
+            break;
+          default:
+            break;
+        }
       }
 
       update() {
         if (mouse.current.x !== null && mouse.current.y !== null) {
-          let dx = this.x - mouse.current.x;
-          let dy = this.y - mouse.current.y;
-          let distance = Math.sqrt(dx * dx + dy * dy);
+          if (smoothMouse.x === null) {
+            smoothMouse.x = mouse.current.x;
+            smoothMouse.y = mouse.current.y;
+          } else {
+            smoothMouse.x = lerp(smoothMouse.x, mouse.current.x, 0.1);
+            smoothMouse.y = lerp(smoothMouse.y, mouse.current.y, 0.1);
+          }
 
+          const dx = this.x - smoothMouse.x;
+          const dy = this.y - smoothMouse.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
           if (distance < maxDistance) {
-            let force = (maxDistance - distance) / maxDistance;
+            const force = (maxDistance - distance) / maxDistance;
             this.x += dx * force * repulsionStrength;
             this.y += dy * force * repulsionStrength;
           }
         }
 
+        this.velocityX += (Math.random() - 0.5) * driftFactor;
+        this.velocityY += (Math.random() - 0.5) * driftFactor;
+
         this.x += this.velocityX;
         this.y += this.velocityY;
         this.angle += this.angleSpeed;
 
-        this.velocityX += (Math.random() - 0.5) * driftFactor;
-        this.velocityY += (Math.random() - 0.5) * driftFactor;
-
-        this.x += (this.baseX - this.x) * returnSpeed;
-        this.y += (this.baseY - this.y) * returnSpeed;
-
-        if (this.x <= 0 || this.x >= canvas.width) this.velocityX *= -1;
-        if (this.y <= 0 || this.y >= canvas.height) this.velocityY *= -1;
+        const margin = 100;
+        if (
+          this.x < -margin ||
+          this.x > canvas.width + margin ||
+          this.y < -margin ||
+          this.y > canvas.height + margin
+        ) {
+          this.spawnFromEdge();
+        }
       }
 
       drawLeaf() {
@@ -87,25 +129,19 @@ export default function BackgroundAnimation() {
     }
 
     const handleMouseMove = (event) => {
-      mouse.current.x = event.clientX;
-      mouse.current.y = event.clientY;
-    };
-
-    const handleMouseLeave = () => {
-      mouse.current.x = null;
-      mouse.current.y = null;
+      mouse.current.x += event.clientX;
+      mouse.current.y += event.clientY;
     };
 
     const handleScroll = () => {
-      let scrollDiff = window.scrollY - scrollOffset.current;
-      particlesArray.current.forEach((particle) => {
-        particle.y += scrollDiff * scrollSpeedFactor;
+      const scrollDiff = window.scrollY - scrollOffset.current;
+      particlesArray.current.forEach((p) => {
+        p.y -= scrollDiff * scrollSpeedFactor;
       });
       scrollOffset.current = window.scrollY;
     };
 
     window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("mouseleave", handleMouseLeave);
     window.addEventListener("scroll", handleScroll);
 
     let animationFrameId;
@@ -123,7 +159,6 @@ export default function BackgroundAnimation() {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener("resize", resizeCanvas);
       window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mouseleave", handleMouseLeave);
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
