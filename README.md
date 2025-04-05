@@ -19,7 +19,7 @@ Ini adalah proyek portofolio pribadi saya yang dibangun menggunakan **React.js**
 - 🧱 React Icons  
 
 ## 📁 Struktur Direktori
-
+```
 PORTOFOLIO/
 ├── public/
 │   └── assets/
@@ -51,7 +51,7 @@ PORTOFOLIO/
 ├── package.json
 ├── vite.config.js
 └── README.md
-
+```
 
 ## 🛠️ Cara Menjalankan Project
 
