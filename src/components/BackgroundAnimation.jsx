@@ -19,8 +19,8 @@ export default function BackgroundAnimation() {
     resizeCanvas();
     window.addEventListener("resize", resizeCanvas);
 
-    const numParticles = 100;
-    const maxDistance = 120;
+    const numParticles = 250;
+    const maxDistance = 150;
     const repulsionStrength = 0.1;
     const driftFactor = 0.02;
     const scrollSpeedFactor = 0.2;
@@ -31,16 +31,18 @@ export default function BackgroundAnimation() {
     class Particle {
       constructor() {
         this.spawnFromEdge();
-        this.size = Math.random() * 6 + 9;
+        this.size = 3;
         this.color = "#2d6a4f";
         this.angle = Math.random() * 360;
         this.angleSpeed = Math.random() * 0.2 - 0.1;
+        this.connections = 0;
+        this.opacity = 1;
+        this.isFadingOut = false;
       }
 
       spawnFromEdge() {
         const edge = Math.floor(Math.random() * 4);
         const margin = 50;
-
         switch (edge) {
           case 0:
             this.x = -margin;
@@ -65,8 +67,6 @@ export default function BackgroundAnimation() {
             this.y = canvas.height + margin;
             this.velocityY = -Math.random() * 0.1 - 0.1;
             this.velocityX = (Math.random() - 0.5) * 0.1;
-            break;
-          default:
             break;
         }
       }
@@ -93,10 +93,8 @@ export default function BackgroundAnimation() {
 
         this.velocityX += (Math.random() - 0.5) * driftFactor;
         this.velocityY += (Math.random() - 0.5) * driftFactor;
-
         this.x += this.velocityX;
         this.y += this.velocityY;
-        this.angle += this.angleSpeed;
 
         const margin = 100;
         if (
@@ -107,19 +105,19 @@ export default function BackgroundAnimation() {
         ) {
           this.spawnFromEdge();
         }
+
+        if (this.isFadingOut) {
+          this.opacity -= 0.02;
+        }
+
+        this.connections = 0;
       }
 
-      drawLeaf() {
-        ctx.save();
-        ctx.translate(this.x, this.y);
-        ctx.rotate((this.angle * Math.PI) / 180);
-        ctx.fillStyle = this.color;
+      drawPoint() {
         ctx.beginPath();
-        ctx.moveTo(0, 0);
-        ctx.bezierCurveTo(-this.size / 2, -this.size, -this.size, this.size / 2, 0, this.size);
-        ctx.bezierCurveTo(this.size, this.size / 2, this.size / 2, -this.size, 0, 0);
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(45, 106, 79, ${Math.max(this.opacity, 0)})`;
         ctx.fill();
-        ctx.restore();
       }
     }
 
@@ -129,8 +127,8 @@ export default function BackgroundAnimation() {
     }
 
     const handleMouseMove = (event) => {
-      mouse.current.x += event.clientX;
-      mouse.current.y += event.clientY;
+      mouse.current.x = event.clientX;
+      mouse.current.y = event.clientY;
     };
 
     const handleScroll = () => {
@@ -147,12 +145,50 @@ export default function BackgroundAnimation() {
     let animationFrameId;
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particlesArray.current.forEach((particle) => {
-        particle.update();
-        particle.drawLeaf();
-      });
+
+      particlesArray.current.forEach((p) => p.update());
+
+      for (let i = 0; i < particlesArray.current.length; i++) {
+        const p1 = particlesArray.current[i];
+        for (let j = i + 1; j < particlesArray.current.length; j++) {
+          const p2 = particlesArray.current[j];
+          const dx = p1.x - p2.x;
+          const dy = p1.y - p2.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance < maxDistance) {
+            p1.connections++;
+            p2.connections++;
+            ctx.beginPath();
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.strokeStyle = `rgba(45, 106, 79, ${1 - distance / maxDistance})`;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        }
+      }
+
+      for (let i = 0; i < particlesArray.current.length; i++) {
+        const p = particlesArray.current[i];
+
+        if (p.connections === 0) {
+          p.isFadingOut = true;
+        } else {
+          p.isFadingOut = false;
+          p.opacity = 1;
+        }
+
+        if (p.opacity <= 0) {
+          particlesArray.current[i] = new Particle();
+        } else {
+          p.drawPoint();
+        }
+      }
+
       animationFrameId = requestAnimationFrame(animate);
     };
+
     animate();
 
     return () => {
