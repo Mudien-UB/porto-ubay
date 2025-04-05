@@ -19,7 +19,14 @@ export default function BackgroundAnimation() {
     resizeCanvas();
     window.addEventListener("resize", resizeCanvas);
 
-    const numParticles = 250;
+    const area = canvas.width * canvas.height;
+    const baseParticles = 150;
+    const standardArea = 1920 * 1080;
+
+    const scale = area / standardArea;
+    const numParticles = Math.floor(baseParticles * Math.pow(scale, 0.5));
+
+
     const maxDistance = 150;
     const repulsionStrength = 0.1;
     const driftFactor = 0.02;

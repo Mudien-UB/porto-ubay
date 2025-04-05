@@ -32,17 +32,25 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const heroElement = document.getElementById("home");
-      if (heroElement) {
-        setShowNavbar(window.scrollY > heroElement.clientHeight * 0.25);
+    alert("Website ini masih dalam tahap pengembangan/production!");
+  
+    document.body.classList.add("hidden");
+  
+    const checkReady = () => {
+      if (document.readyState === "complete" && document.fonts.ready) {
+        setLoading(false);
+        document.body.classList.remove("hidden");
       }
     };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+  
+    window.addEventListener("load", checkReady);
+    document.fonts.ready.then(checkReady);
+  
+    return () => {
+      window.removeEventListener("load", checkReady);
+    };
   }, []);
-
+  
   if (loading) {
     return <LoadingPage />;
   }

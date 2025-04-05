@@ -63,6 +63,11 @@
   --color-raisin-black-900:#d5d4d6;
 
 }
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
 
 :root{
   color: var(--color-ivory);
