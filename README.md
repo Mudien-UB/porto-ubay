@@ -1,12 +1,72 @@
-# React + Vite
+# 🧑‍💻 Personal Portfolio - React JS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Ini adalah proyek portofolio pribadi saya yang dibangun menggunakan **React.js** dan **Tailwind CSS**. Website ini berisi informasi tentang saya, pengalaman kerja, skill, serta beberapa proyek yang pernah saya kerjakan.
 
-Currently, two official plugins are available:
+## ✨ Fitur
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🎯 Landing page profesional  
+- 🙋 Tentang Saya  
+- 🧠 Skill & Pengalaman  
+- 🗂️ Daftar Proyek  
+- 📬 Formulir Kontak  
+- 🌐 Link ke sosial media  
 
-## Expanding the ESLint configuration
+## 🚀 Tech Stack
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- ⚛️ React JS  
+- 💨 Tailwind CSS  
+- 🎞️ Framer Motion  
+- 🧱 React Icons  
+
+## 📁 Struktur Direktori
+
+PORTOFOLIO/
+├── public/
+│   └── assets/
+│   └── images/
+│       └── me.png
+├── src/
+│   ├── animations/
+│   │   └── variants.jsx
+│   ├── assets/
+│   ├── components/
+│   │   ├── BackgroundAnimation.jsx
+│   │   ├── Footer.jsx
+│   │   ├── FormSendMe.jsx
+│   │   └── Navbar.jsx
+│   ├── hooks/
+│   │   └── useInViewAnimation.jsx
+│   ├── pages/
+│   │   ├── AboutMePage.jsx
+│   │   ├── ContactPage.jsx
+│   │   ├── HeroPage.jsx
+│   │   ├── LoadingPage.jsx
+│   │   ├── ProjectsPage.jsx
+│   │   └── WhyChooseMePage.jsx
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+├── .gitignore
+├── index.html
+├── package.json
+├── vite.config.js
+└── README.md
+
+
+## 🛠️ Cara Menjalankan Project
+
+Untuk menjalankan proyek secara lokal:
+
+```bash
+# 1. Clone repository
+git clone https://github.com/username/nama-repo-porto.git
+
+# 2. Masuk ke folder project
+cd nama-repo-porto
+
+# 3. Install dependencies
+npm install
+
+# 4. Jalankan server development
+npm run dev
+```
