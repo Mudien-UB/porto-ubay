@@ -23,9 +23,9 @@ export default function AboutMePage({ id }) {
           variants={fadeIn(0.1)}
         >
           <motion.img
-            src="/public/images/me.png"
+            src="/assets/images/me.png"
             alt="Profile"
-            className="w-44 h-44 rounded-full object-cover border-4 border-brunswick-green-800 shadow-xl hover:scale-105 transition-transform duration-300"
+            className="w-52 h-52 rounded-full object-cover border-4 border-brunswick-green-800 shadow-xl hover:scale-105 transition-transform duration-300"
             variants={scaleIn(0.2)}
           />
 
