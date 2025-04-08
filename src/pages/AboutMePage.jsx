@@ -35,7 +35,7 @@ export default function AboutMePage({ id }) {
           </motion.div>
 
           <motion.div
-            className="relative p-5 m-1 rounded-xl text-center max-w-md md:mb-0 mb-10 text-satin-sheen-gold-800 font-medium text-xs md:text-sm italic font-poppins overflow-hidden"
+            className="relative p-5 m-1 rounded-xl text-center max-w-sm md:max-w-md md:mb-0 mb-10 text-satin-sheen-gold-800 font-medium text-xs md:text-sm italic font-poppins overflow-hidden"
             variants={slideInLeft(0.6)}
           >
             <p>
