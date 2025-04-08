@@ -10,7 +10,6 @@ import LoadingPage from "./pages/LoadingPage";
 import ContactPage from "./pages/ContactPage";
 
 export default function App() {
-  const [showNavbar, setShowNavbar] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -58,9 +57,9 @@ export default function App() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 z-50 w-full ${showNavbar ? 'shadow-2xl' : '' } `}
+        className={`fixed top-0 left-0 z-50 w-full `}
       >
-        <Navbar showNavbar={showNavbar} />
+        <Navbar />
       </header>
 
       <BackgroundAnimation />
