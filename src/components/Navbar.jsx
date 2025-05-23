@@ -39,14 +39,14 @@ export default function Navbar() {
   };
 
   const downloadCv = () => {
-    window.open("https://www.google.com", "_blank");
+    window.open("https://drive.google.com/file/d/1BLu-IxTpVvOYrjzl7l3dzK-DF25syjek/view?usp=sharing", "_blank");
     setIsOpen(false);
   };
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0);
-    };
+    };  
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -82,8 +82,8 @@ export default function Navbar() {
               onClick={downloadCv}
               className="flex items-center gap-2 bg-gold-500 text-brunswick-green-900 font-bold px-4 py-2 rounded-xl shadow-lg border-2 border-gold-400 hover:bg-gradient-to-bl hover:from-satin-sheen-gold hover:to-satin-sheen-gold-700 hover:border-satin-sheen-gold hover:text-ivory-600 transition-all duration-300"
             >
-              <BiCloudDownload size={24} />
-              <span>Get My CV</span>
+              <BiCloudDownload className='hidden lg:block' size={24} />
+              <span>My Resume</span>
             </button>
           </li>
         </ul>
