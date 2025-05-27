@@ -1,1 +1,1 @@
-export const FORM_URL = import.meta.env.VITE_FORMSPREE_URL;
+export const FORM_URL = "https://formspree.io/f/xpwdvagz";
