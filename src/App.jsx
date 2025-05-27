@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
 import HeroPage from "./pages/HeroPage";
 import AboutMePage from "./pages/AboutMePage";
 import WhyChooseMePage from "./pages/WhyChooseMePage";
-import BackgroundAnimation from "./components/BackgroundAnimation";
 import ProjectsPage from "./pages/ProjectsPage";
 import LoadingPage from "./pages/LoadingPage";
 import ContactPage from "./pages/ContactPage";
+import Navbar from './components/organisms/Navbar';
+import BackgroundAnimation from './animations/BackgroundAnimation';
+import Footer from './components/organisms/Footer';
 
 export default function App() {
   const [loading, setLoading] = useState(true);

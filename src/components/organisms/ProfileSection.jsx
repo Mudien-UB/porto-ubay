@@ -1,7 +1,7 @@
 import React from 'react'
 import { motion } from 'framer-motion';
-import { useInViewAnimation } from '../hooks/useInViewAnimation';
-import { fadeIn, scaleIn, slideInLeft, slideInRight } from '../animations/variants';
+import { useInViewAnimation } from '../../hooks/useInViewAnimation';
+import { fadeIn, scaleIn, slideInLeft, slideInRight } from '../../animations/variants';
 
 export default function ProfileSection() {
     const [ref, isInView] = useInViewAnimation();

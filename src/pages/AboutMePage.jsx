@@ -1,6 +1,6 @@
 import React from 'react';
-import ProfileSection from '../components/ProfileSection';
-import SkillsSection from '../components/SkillsSection';
+import ProfileSection from '../components/organisms/ProfileSection';
+import SkillsSection from '../components/organisms/SkillsSection';
 
 export default function AboutMePage({ id }) {
 

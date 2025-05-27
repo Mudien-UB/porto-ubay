@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { slideInLeft, slideInUp } from '../animations/variants';
+import { slideInLeft, slideInUp } from '../../animations/variants';
 
 export default function SkillGrid({ title, items }) {
   const ref = useRef(null);

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SkillGrid from "./SkillsGrid";
+import SkillGrid from '../molecules/SkillsGrid';
 
 const languages = [
     { title: "Java", link: "/assets/images/skil-icon/java.svg" },
