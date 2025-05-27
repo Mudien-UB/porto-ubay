@@ -13,7 +13,7 @@ export default function HeroPage({ id }) {
   return (
     <section
       id={id}
-      className="w-11/12 max-w-screen-xl mx-auto h-screen flex flex-col gap-6 sm:gap-8 items-center justify-center text-center px-4"
+      className="w-11/12 max-w-screen-xl mx-auto h-screen flex flex-col gap-5 sm:gap-8 items-center justify-center text-center px-4"
     >
       <motion.h1
         initial={{ opacity: 0, y: -30 }}
@@ -30,7 +30,7 @@ export default function HeroPage({ id }) {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.5 }}
         viewport={{ once: true, amount: 0.4 }}
-        className="text-[10px] sm:text-xs md:text-sm font-black bg-satin-sheen-gold px-3 py-1 rounded-2xl opacity-90 text-ivory"
+        className="text-xs sm:text-sm md:text-xl px-3 py-1 text-center font-black whitespace-nowrap  bg-satin-sheen-gold rounded-2xl opacity-90 text-ivory"
       >
         Fullstack Web Developer | Crafting Digital Experiences
       </motion.h4>
