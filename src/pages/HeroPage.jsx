@@ -15,6 +15,15 @@ export default function HeroPage({ id }) {
       id={id}
       className="w-11/12 max-w-screen-xl mx-auto h-screen flex flex-col gap-5 sm:gap-8 items-center justify-center text-center px-4"
     >
+     <motion.h1
+        initial={{ opacity: 0, y: -30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true, amount: 0.4 }}
+        className="text-xl sm:text-2xl md:text-4xl font-bold bg-gradient-to-b from-golden-brown to-satin-sheen-gold-800 bg-clip-text text-transparent font-montserrat"
+      >
+        {`(...) -> {...}`}
+      </motion.h1> 
       <motion.h1
         initial={{ opacity: 0, y: -30 }}
         whileInView={{ opacity: 1, y: 0 }}
