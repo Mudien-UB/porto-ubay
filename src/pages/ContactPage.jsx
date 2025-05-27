@@ -1,5 +1,4 @@
 import React from "react";
-import FormSendMe from "../components/FormSendMe";
 import { BiLogoGmail } from "react-icons/bi";
 import { VscGithubInverted } from "react-icons/vsc";
 import { FaLinkedin } from "react-icons/fa";
@@ -7,6 +6,7 @@ import { MdConnectWithoutContact } from "react-icons/md";
 import { motion } from "framer-motion";
 import { useInViewAnimation } from "../hooks/useInViewAnimation";
 import { slideInLeft, slideInRight } from "../animations/variants";
+import FormSendMe from '../components/molecules/FormSendMe';
 
 export default function ContactPage({ id }) {
   const socialLinks = [
