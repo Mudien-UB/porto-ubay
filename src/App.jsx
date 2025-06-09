@@ -16,7 +16,7 @@ export default function App() {
     document.body.classList.add("hidden");
 
     const checkReady = () => {
-      if (document.readyState === "complete" && document.fonts.ready) {
+      if (document.readyState === "complete") {
         setLoading(false);
         document.body.classList.remove("hidden");
       }
@@ -30,35 +30,13 @@ export default function App() {
     };
   }, []);
 
-  useEffect(() => {
-    alert("Website ini masih dalam tahap pengembangan/production!");
-  
-    document.body.classList.add("hidden");
-  
-    const checkReady = () => {
-      if (document.readyState === "complete" && document.fonts.ready) {
-        setLoading(false);
-        document.body.classList.remove("hidden");
-      }
-    };
-  
-    window.addEventListener("load", checkReady);
-    document.fonts.ready.then(checkReady);
-  
-    return () => {
-      window.removeEventListener("load", checkReady);
-    };
-  }, []);
-  
   if (loading) {
     return <LoadingPage />;
   }
 
   return (
     <>
-      <header
-        className={`fixed top-0 left-0 z-50 w-full `}
-      >
+      <header className="fixed top-0 left-0 z-50 w-full">
         <Navbar />
       </header>
 

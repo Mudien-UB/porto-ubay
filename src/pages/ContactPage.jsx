@@ -7,26 +7,32 @@ import { motion } from "framer-motion";
 import { useInViewAnimation } from "../hooks/useInViewAnimation";
 import { slideInLeft, slideInRight } from "../animations/variants";
 import FormSendMe from '../components/molecules/FormSendMe';
+import SocialLink from "../components/molecules/SocialLink";
+
+
 
 export default function ContactPage({ id }) {
   const socialLinks = [
     {
       label: "Gmail",
+      colorClass: "text-red-500",
       href: "mailto:mudienub@gmail.com",
       icon: <BiLogoGmail size={32} />,
-      hoverClass: "hover:text-red-500",
+      hoverClass: "md:hover:text-red-500",
     },
     {
       label: "GitHub",
+      colorClass: "text-gray-200",
       href: "https://github.com/mudien-ub",
       icon: <VscGithubInverted size={32} />,
-      hoverClass: "hover:text-gray-800 dark:hover:text-gray-400",
+      hoverClass: "md:hover:text-gray-800 md:dark:hover:text-gray-400",
     },
     {
       label: "LinkedIn",
+      colorClass: "text-blue-600",
       href: "https://www.linkedin.com/in/ubay-lahmudien",
       icon: <FaLinkedin size={32} />,
-      hoverClass: "hover:text-blue-600",
+      hoverClass: "md:hover:text-blue-600",
     },
   ];
 
@@ -78,19 +84,7 @@ export default function ContactPage({ id }) {
 
           <div className="flex justify-center space-x-10">
             {socialLinks.map((social, idx) => (
-              <div key={idx} className="flex flex-col items-center">
-                <a
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`text-satin-sheen-gold-900 transition-transform transform hover:scale-110 ${social.hoverClass}`}
-                >
-                  {social.icon}
-                </a>
-                <span className="text-sm mt-2 text-satin-sheen-gold-900 dark:text-gray-200">
-                  {social.label}
-                </span>
-              </div>
+              <SocialLink key={idx} social={social} />
             ))}
           </div>
         </motion.div>
