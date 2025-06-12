@@ -39,9 +39,9 @@ export default function HeroPage({ id }) {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1, delay: 0.5 }}
         viewport={{ once: true, amount: 0.4 }}
-        className="text-xs sm:text-sm md:text-xl px-3 py-1 text-center font-black whitespace-nowrap  bg-satin-sheen-gold rounded-2xl opacity-90 text-ivory"
+        className="text-xs sm:text-sm md:text-xl px-3 py-1 text-center font-black  bg-satin-sheen-gold rounded-2xl opacity-90 text-ivory"
       >
-        Fullstack Web Developer | Crafting Digital Experiences
+        Software Developer with a focus on server-side development and API integration.
       </motion.h4>
 
       <motion.div

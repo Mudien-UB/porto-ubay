@@ -1,5 +1,10 @@
 {
   "name": "portofolio",
+  "author": {
+    "name": "ubay lahmudien",
+    "email": "mudienub@gmail.com",
+    "url": "https://ubay-lahmudien.vercel.app"
+  },
   "private": true,
   "version": "0.0.0",
   "type": "module",

@@ -18,55 +18,29 @@ Ini adalah proyek portofolio pribadi saya yang dibangun menggunakan **React.js**
 - 🎞️ Framer Motion  
 - 🧱 React Icons  
 
-## 📁 Struktur Direktori
-```
-PORTOFOLIO/
-├── public/
-│   └── assets/
-│   └── images/
-│       └── me.png
-├── src/
-│   ├── animations/
-│   │   └── variants.jsx
-│   ├── assets/
-│   ├── components/
-│   │   ├── BackgroundAnimation.jsx
-│   │   ├── Footer.jsx
-│   │   ├── FormSendMe.jsx
-│   │   └── Navbar.jsx
-│   ├── hooks/
-│   │   └── useInViewAnimation.jsx
-│   ├── pages/
-│   │   ├── AboutMePage.jsx
-│   │   ├── ContactPage.jsx
-│   │   ├── HeroPage.jsx
-│   │   ├── LoadingPage.jsx
-│   │   ├── ProjectsPage.jsx
-│   │   └── WhyChooseMePage.jsx
-│   ├── App.jsx
-│   ├── index.css
-│   └── main.jsx
-├── .gitignore
-├── index.html
-├── package.json
-├── vite.config.js
-└── README.md
-```
-
 ## 🛠️ Cara Menjalankan Project
 
 Untuk menjalankan proyek secara lokal:
 
 ```bash
 # 1. Clone repository
-git clone https://github.com/username/nama-repo-porto.git
+git clone https://github.com/Mudien-UB/porto-ubay.git
 
 # 2. Masuk ke folder project
-cd nama-repo-porto
+cd porto-ubay
 
 # 3. Install dependencies
 npm install
+# Atau jika menggunakan Yarn
+yarn install
 
 # 4. Jalankan server development
 npm run dev
+
+# Atau jika menggunakan Yarn
+yarn dev
+
 ```
+
+5. Buka di browser http://localhost:5173/
+
