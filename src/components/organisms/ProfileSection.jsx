@@ -67,7 +67,7 @@ export default function ProfileSection() {
         >
           <p className='indent-8'>
             I am a software developer specializing in backend development with a strong proficiency in
-            <span className="font-bold text-satin-sheen-gold-700">&nbsp;Java (Spring Boot)&nbsp;</span> and
+            <span className="font-bold text-satin-sheen-gold-700">&nbsp;Java (Spring Boot)&nbsp;</span> and i learned some of
             <span className="font-bold text-satin-sheen-gold-700">&nbsp;PHP (Laravel)&nbsp;</span>.
             I am skilled in designing and building
             <span className="font-bold text-satin-sheen-gold-700">&nbsp;RESTful APIs&nbsp;</span>
