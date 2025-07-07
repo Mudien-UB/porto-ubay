@@ -39,7 +39,7 @@ export default function Navbar() {
   };
 
   const downloadCv = () => {
-    window.open("https://drive.google.com/file/d/1BLu-IxTpVvOYrjzl7l3dzK-DF25syjek/view?usp=sharing", "_blank");
+    window.open("https://drive.google.com/file/d/1Q5rSaJ6bRb8KHAr2WT5g_GTwgCE6vi1L/view?usp=sharing", "_blank");
     setIsOpen(false);
   };
 
