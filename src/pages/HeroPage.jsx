@@ -10,6 +10,11 @@ export default function HeroPage({ id }) {
     }
   };
 
+  const profileData = {
+    username: "Bey_Mudien",
+    description:"Software Developer with a focus on server-side development and API integration."
+  }
+
   return (
     <section
       id={id}
@@ -31,7 +36,7 @@ export default function HeroPage({ id }) {
         viewport={{ once: true, amount: 0.4 }}
         className="text-3xl sm:text-4xl md:text-6xl font-bold bg-gradient-to-bl from-golden-brown to-satin-sheen-gold-800 bg-clip-text text-transparent font-montserrat"
       >
-        Bey_Mudien
+        {profileData.username}
       </motion.h1>
 
       <motion.h4
@@ -41,7 +46,7 @@ export default function HeroPage({ id }) {
         viewport={{ once: true, amount: 0.4 }}
         className="text-xs sm:text-sm md:text-xl px-3 py-1 text-center font-black  bg-satin-sheen-gold rounded-2xl opacity-90 text-ivory"
       >
-        Software Developer with a focus on server-side development and API integration.
+        {profileData.description}
       </motion.h4>
 
       <motion.div
