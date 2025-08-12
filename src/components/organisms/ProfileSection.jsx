@@ -31,7 +31,7 @@ export default function ProfileSection() {
     username: "Bey_Mudien",
     fullName: "Ubay Lahmudien",
     title: "Fullstack Web Developer",
-    photo: "/assets/images/me.jpg",
+    photo: "/assets/images/me.png",
     quote: `“Where creativity flows through every line of code.
 When logic meets imagination in perfect harmony,
 Innovation is no longer a goal—it becomes a way of life.

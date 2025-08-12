@@ -3,15 +3,14 @@ import SkillGrid from '../molecules/SkillsGrid';
 
 const languages = [
     { title: "Java", link: "/assets/images/skil-icon/java.svg" },
-    { title: "PHP", link: "/assets/images/skil-icon/php.svg" },
     { title: "JavaScript", link: "/assets/images/skil-icon/javascript.svg" },
     { title: "HTML", link: "/assets/images/skil-icon/html.svg" },
     { title: "CSS", link: "/assets/images/skil-icon/css.svg" },
+    { title: "PHP", link: "/assets/images/skil-icon/php.svg" },
 ];
 
 const frameworks = [
     { title: "Spring Boot", link: "/assets/images/skil-icon/spring.svg" },
-    { title: "Laravel", link: "/assets/images/skil-icon/laravel.svg" },
     { title: "React", link: "/assets/images/skil-icon/react.svg" },
     { title: "Tailwind CSS", link: "/assets/images/skil-icon/tailwind.svg" },
 ];
