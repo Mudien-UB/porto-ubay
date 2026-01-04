@@ -1,7 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { BiCloudDownload } from 'react-icons/bi';
-import { HiMenu, HiX } from 'react-icons/hi';
-import { AiOutlineHome, AiOutlineUser, AiOutlineProject, AiOutlineMail } from 'react-icons/ai';
+import React, { useState, useEffect } from "react";
+import { BiCloudDownload } from "react-icons/bi";
+import { HiMenu, HiX } from "react-icons/hi";
+import {
+  AiOutlineHome,
+  AiOutlineUser,
+  AiOutlineProject,
+  AiOutlineMail,
+} from "react-icons/ai";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,42 +16,45 @@ export default function Navbar() {
     {
       id: "home",
       title: "Home",
-      icon: <AiOutlineHome />
+      icon: <AiOutlineHome />,
     },
     {
       id: "about",
       title: "About",
-      icon: <AiOutlineUser />
+      icon: <AiOutlineUser />,
     },
     {
       id: "projects",
       title: "Projects",
-      icon: <AiOutlineProject />
+      icon: <AiOutlineProject />,
     },
     {
       id: "contact",
       title: "Contact",
-      icon: <AiOutlineMail />
-    }
+      icon: <AiOutlineMail />,
+    },
   ];
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
       setIsOpen(false);
     }
   };
 
   const downloadCv = () => {
-    window.open("https://drive.google.com/file/d/1Q5rSaJ6bRb8KHAr2WT5g_GTwgCE6vi1L/view?usp=sharing", "_blank");
+    window.open(
+      "https://drive.google.com/file/d/1Q5rSaJ6bRb8KHAr2WT5g_GTwgCE6vi1L/view?usp=sharing",
+      "_blank"
+    );
     setIsOpen(false);
   };
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 0);
-    };  
+    };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -55,13 +63,12 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 left-0 w-full px-6 py-4 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-brunswick-green-300/80 backdrop-blur-sm'
-          : 'bg-transparent'
-      }`}
-    >
+          ? "bg-brunswick-green-300/80 backdrop-blur-sm"
+          : "bg-transparent"
+      }`}>
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold bg-gradient-to-bl from-golden-brown to-satin-sheen-gold-800 bg-clip-text text-transparent font-montserrat">
-          Bey_Mudien
+          Mudien_UB
         </h1>
 
         {/* Desktop Nav */}
@@ -70,8 +77,7 @@ export default function Navbar() {
             <li key={id}>
               <button
                 onClick={() => scrollToSection(id)}
-                className="flex items-center gap-2 hover:text-satin-sheen-gold transition-colors"
-              >
+                className="flex items-center gap-2 hover:text-satin-sheen-gold transition-colors">
                 {icon}
                 {title}
               </button>
@@ -80,9 +86,8 @@ export default function Navbar() {
           <li>
             <button
               onClick={downloadCv}
-              className="flex items-center gap-2 bg-gold-500 text-brunswick-green-900 font-bold px-4 py-2 rounded-xl shadow-lg border-2 border-gold-400 hover:bg-gradient-to-bl hover:from-satin-sheen-gold hover:to-satin-sheen-gold-700 hover:border-satin-sheen-gold hover:text-ivory-600 transition-all duration-300"
-            >
-              <BiCloudDownload className='hidden lg:block' size={24} />
+              className="flex items-center gap-2 bg-gold-500 text-brunswick-green-900 font-bold px-4 py-2 rounded-xl shadow-lg border-2 border-gold-400 hover:bg-gradient-to-bl hover:from-satin-sheen-gold hover:to-satin-sheen-gold-700 hover:border-satin-sheen-gold hover:text-ivory-600 transition-all duration-300">
+              <BiCloudDownload className="hidden lg:block" size={24} />
               <span>My Resume</span>
             </button>
           </li>
@@ -91,8 +96,7 @@ export default function Navbar() {
         {/* Hamburger */}
         <button
           className="md:hidden text-3xl text-ivory-500"
-          onClick={() => setIsOpen(!isOpen)}
-        >
+          onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <HiX /> : <HiMenu />}
         </button>
       </div>
@@ -104,16 +108,14 @@ export default function Navbar() {
             <button
               key={id}
               onClick={() => scrollToSection(id)}
-              className="flex items-center gap-2 text-green-800 font-semibold hover:text-satin-sheen-gold transition-colors"
-            >
+              className="flex items-center gap-2 text-green-800 font-semibold hover:text-satin-sheen-gold transition-colors">
               {icon}
               {title}
             </button>
           ))}
           <button
             onClick={downloadCv}
-            className="flex items-center gap-2 bg-gold-500 text-green-900 font-bold px-4 py-2 rounded-xl border border-gold-400 hover:bg-gradient-to-bl hover:from-satin-sheen-gold hover:to-satin-sheen-gold-700 hover:text-ivory-600 transition-all duration-300 w-full justify-center"
-          >
+            className="flex items-center gap-2 bg-gold-500 text-green-900 font-bold px-4 py-2 rounded-xl border border-gold-400 hover:bg-gradient-to-bl hover:from-satin-sheen-gold hover:to-satin-sheen-gold-700 hover:text-ivory-600 transition-all duration-300 w-full justify-center">
             <BiCloudDownload size={24} />
             <span>Get My CV</span>
           </button>

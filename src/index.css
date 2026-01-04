@@ -61,8 +61,8 @@
   --color-raisin-black-700:#807d83;
   --color-raisin-black-800:#aaa9ac;
   --color-raisin-black-900:#d5d4d6;
-
 }
+
 @layer base {
   html {
     scroll-behavior: smooth;
